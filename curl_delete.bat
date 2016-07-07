@@ -1,0 +1,1 @@
+curl -XDELETE http://localhost:3000/candies/2

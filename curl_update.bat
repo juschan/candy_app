@@ -1,0 +1,1 @@
+curl -XPUT -H "Content-Type: application/json" -d '{"name":"Marshmallows","color":"white"}' http://localhost:3000/candies/3

@@ -1,0 +1,1 @@
+curl -XPOST -H "Content-Type: application/json" -d '{"name":"Jelly Bear","color":"orange"}' http://localhost:3000/candies
