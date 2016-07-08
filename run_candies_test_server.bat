@@ -1,0 +1,1 @@
+set DEBUG=candy_app:* & npm run start_test

@@ -33,33 +33,39 @@ router.get('/', function(req, res, next) {
 
 //index
 router.get('/candies', (req,res) => {
-    res.status(200).json({json: candies})
+    res.status(200).json( {candies} )
 });
 
 //show
 router.get('/candies/:id', (req,res) => {
-    console.log(req.params.id)
-    res.status(200).json({json: candies[parseInt(req.params.id)-1]})
+    //console.log(req.params.id)
+    var candy = [candies[parseInt(req.params.id)-1]]
+    res.status(200).json( {candy} )
 });
 
 
 //create
 router.post('/candies', (req, res) => {
+    // check for wrong color
+    if (req.body.color === 'wrong') {
+      res.status(422).json({message: 'wrong color'})
+    }
     //increase index
     index++;
     //create new candy object
-    var candy={ "id":index,"name": req.body.name, "color": req.body.color}
+    var new_candy={ "id":index,"name": req.body.name, "color": req.body.color}
     //add to candies array collection
-    candies.push(candy)
+    candies.push(new_candy)
+    var candy=[new_candy]
     //respond with this new entry
-    res.status(200).json({ candy })
+    res.status(200).json({candy})
 });
 
 //update
 router.put('/candies/:id', (req,res) => {
     //updateCandy, returns the array index of updated candy
     var i=updateCandy(req.params.id, req.body.name, req.body.color);
-    res.status(200).json({json: candies[i] });
+    res.status(200).json({candies: [candies[i]] });
 });
 
 //destroy
