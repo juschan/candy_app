@@ -5,7 +5,7 @@ var candies = [
   {"id":2,"name":"Pez","color":"Green"},
   {"id":3,"name":"Marshmallow","color":"Pink"},
   {"id":4,"name":"Candy Stick","color":"Blue"}
-  ]
+  ];
 var index=4;
 
 function updateCandy (id, name, color) {
@@ -64,13 +64,13 @@ router.post('/candies', (req, res) => {
 //update
 router.put('/candies/:id', (req,res) => {
     //updateCandy, returns the array index of updated candy
-    var i=updateCandy(req.params.id, req.body.name, req.body.color);
+    var i=updateCandy(parseInt(req.params.id), req.body.name, req.body.color);
     res.status(200).json({candies: [candies[i]] });
 });
 
 //destroy
 router.delete('/candies/:id', (req,res) => {
-    deleteCandy(req.params.id)
+    deleteCandy(parseInt(req.params.id))
     res.status(200).json({message:"deleted"})
 });
 
