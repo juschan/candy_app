@@ -1,5 +1,6 @@
 /* globals describe it before */
 var util = require('util');
+const app = require('../app');
 const expect = require('chai').expect
 const supertest = require('supertest')
 const api = supertest('http://localhost:3000')
