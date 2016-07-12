@@ -47,9 +47,10 @@ router.get('/candies/:id', (req,res) => {
 //create
 router.post('/candies', (req, res) => {
     // check for wrong color
+    console.log("server: " + req.body.color)
     if (req.body.color === 'wrong') {
       res.status(422).json({message: 'wrong color'})
-    }
+    } else {
     //increase index
     index++;
     //create new candy object
@@ -59,6 +60,7 @@ router.post('/candies', (req, res) => {
     var candy=[new_candy]
     //respond with this new entry
     res.status(200).json({candy})
+    }
 });
 
 //update

@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,6 +8,21 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGODB_URI)
+
+const Candy = require('./models/candy')
+
+let candyplus = new Candy({
+  name:'Candy',
+  color: 'Pink'
+})
+
+candyplus.save((err) => {
+  if (err) console.log(err)
+  console.log('saved')
+})
 
 var app = express();
 const port = process.env.PORT || 3000

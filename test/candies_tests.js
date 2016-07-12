@@ -98,7 +98,11 @@ describe('POST /candies', () => {
       api.post('/candies')
       .set('Accept', 'application/json')
       .send({ "id": 6, "name": "my little pony", "color": "wrong"})
-      .expect(422,done);
+      .expect(422)
+      .end((err,response) => {
+        //console.log("Client: 422 error received.")
+        done();
+      });
   }); //closing it
 
 
